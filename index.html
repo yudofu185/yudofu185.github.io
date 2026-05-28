@@ -276,12 +276,111 @@ footer {
   .gloss-item { grid-template-columns: 1fr; gap: 4px; }
   .hero { padding: 36px 20px 32px; }
 }
+
+/* ── ナビゲーションバー ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; height: 54px;
+  background: rgba(26,26,46,0.97); backdrop-filter: blur(8px);
+  display: flex; align-items: center; gap: 0;
+  z-index: 100; padding: 0 12px;
+  overflow-x: auto; -webkit-overflow-scrolling: touch;
+  box-shadow: 0 1px 0 rgba(255,255,255,.05);
+}
+.nav::-webkit-scrollbar { display: none; }
+.nav-logo {
+  font-family: 'M PLUS Rounded 1c', sans-serif;
+  font-size: 13px; font-weight: 700;
+  color: rgba(255,255,255,.45); white-space: nowrap;
+  padding-right: 16px; border-right: 1px solid rgba(255,255,255,.1);
+  margin-right: 8px; flex-shrink: 0;
+}
+.nav-tab {
+  height: 54px; display: flex; align-items: center; padding: 0 14px;
+  font-size: 12px; color: rgba(255,255,255,.45);
+  cursor: pointer; white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  transition: color .15s, border-color .15s; flex-shrink: 0;
+  user-select: none;
+}
+.nav-tab:hover { color: rgba(255,255,255,.75); }
+.nav-tab.active { color: #fff; border-bottom-color: var(--accent); }
+.nav-tab-num {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; background: rgba(255,255,255,.1);
+  border-radius: 4px; font-size: 10px; margin-right: 6px;
+}
+/* ── ページ制御 ── */
+.pages { padding-top: 54px; }
+.page { display: none; max-width: 820px; margin: 0 auto; padding: 48px 24px 96px; }
+.page.active { display: block; }
+/* ── ページヘッダー（P2以降） ── */
+.page-header { padding: 28px 0 24px; margin-bottom: 40px; border-bottom: 2px solid var(--line); }
+.page-header-num { font-size: 11px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.page-header h1 { font-family: 'M PLUS Rounded 1c', sans-serif; font-size: 26px; font-weight: 700; line-height: 1.3; margin-bottom: 6px; }
+.page-header p { font-size: 14px; color: var(--mid); }
+/* ── ページ下部ナビ ── */
+.page-nav { display: flex; justify-content: space-between; align-items: center; margin-top: 60px; padding-top: 24px; border-top: 1px solid var(--line); }
+.page-nav-spacer { flex: 1; }
+.pnbtn {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 18px; border-radius: 10px; font-size: 13px;
+  cursor: pointer; transition: all .15s; border: 1.5px solid var(--line);
+  background: var(--white); color: var(--mid); font-family: 'Noto Sans JP', sans-serif;
+}
+.pnbtn:hover { border-color: var(--accent); color: var(--accent); background: #f0f4ff; }
+.pnbtn.next { background: var(--accent); border-color: var(--accent); color: #fff; }
+.pnbtn.next:hover { background: #4a6ef0; }
+/* ── スクリーンモック ── */
+.screen-mock { background: #1a1a2e; border-radius: 12px; overflow: hidden; border: 1px solid #2a2a4a; margin: 20px 0; }
+.smock-bar { background: #13151a; padding: 8px 14px; display: flex; align-items: center; gap: 8px; border-bottom: 1px solid #2a2a4a; }
+.smock-dot { width: 10px; height: 10px; border-radius: 50%; }
+.smock-title { font-size: 11px; color: rgba(255,255,255,.3); margin-left: 4px; font-family: monospace; }
+.smock-body { padding: 16px; display: grid; grid-template-columns: 190px 1fr; gap: 1px; background: #2a2a4a; min-height: 210px; }
+.smock-sidebar { background: #13151a; padding: 12px; display: flex; flex-direction: column; gap: 4px; }
+.smock-sidebar-item { padding: 7px 10px; border-radius: 6px; font-size: 11px; font-family: monospace; color: rgba(255,255,255,.4); }
+.smock-sidebar-item.active { background: rgba(91,127,255,.2); color: #7ea3ff; border: 1px solid rgba(91,127,255,.3); }
+.smock-sidebar-lbl { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.2); padding: 10px 10px 4px; }
+.smock-main { background: #0e0f11; padding: 16px; }
+.smock-heading { font-size: 15px; font-weight: 700; color: #7ea3ff; margin-bottom: 10px; font-family: monospace; display: flex; align-items: center; gap: 8px; }
+.smock-badge { background: rgba(91,127,255,.15); border: 1px solid rgba(91,127,255,.3); border-radius: 4px; padding: 1px 8px; font-size: 10px; color: #7ea3ff; font-family: monospace; }
+.smock-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 6px; margin-top: 10px; }
+.smock-thumb { aspect-ratio: 1; border-radius: 4px; background: #1f232d; border: 1px solid #2a2f3d; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+.smock-thumb.filled { background: linear-gradient(135deg,#2a2460,#3a3480); }
+.smock-drop { margin-top: 12px; border: 1px dashed #363d52; border-radius: 8px; padding: 18px; text-align: center; color: rgba(255,255,255,.2); font-size: 12px; }
+.smock-progress { margin-top: 12px; height: 4px; background: #1f232d; border-radius: 2px; overflow: hidden; }
+.smock-progress-bar { height: 100%; background: var(--accent); border-radius: 2px; }
+/* ── チェックリストカード ── */
+.checklist-card { background: var(--white); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; margin-bottom: 10px; }
+.checklist-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.checklist-card ul { padding-left: 18px; font-size: 13px; color: var(--mid); line-height: 2.0; }
+/* ── 機能カード ── */
+.feat-cards { display: grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap: 12px; margin-top: 16px; }
+.feat-card { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px; }
+.feat-card .ico { font-size: 22px; margin-bottom: 8px; }
+.feat-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+.feat-card p { font-size: 12.5px; color: var(--mid); }
+/* レスポンシブ */
+@media (max-width:600px) {
+  .smock-body { grid-template-columns: 1fr; }
+  .smock-sidebar { display: none; }
+}
 </style>
 </head>
 <body>
-<div class="page">
 
-<!-- ヒーロー -->
+<nav class="nav">
+  <div class="nav-logo">VRC Gallery</div>
+  <div class="nav-tab active" onclick="showPage(0)"><span class="nav-tab-num">1</span>概要・プラン</div>
+  <div class="nav-tab" onclick="showPage(1)"><span class="nav-tab-num">2</span>セットアップ</div>
+  <div class="nav-tab" onclick="showPage(2)"><span class="nav-tab-num">3</span>管理ツールの使い方</div>
+  <div class="nav-tab" onclick="showPage(3)"><span class="nav-tab-num">4</span>アップロード</div>
+  <div class="nav-tab" onclick="showPage(4)"><span class="nav-tab-num">5</span>FAQ・サポート</div>
+</nav>
+
+<div class="pages">
+
+<!-- PAGE 1 -->
+<div class="page active" id="page-0">
 <div class="hero">
   <div class="hero-badge">📖 かんたん使い方ガイド</div>
   <h1>VRChat Cloud Gallery<br>使い方ガイド</h1>
@@ -292,6 +391,7 @@ footer {
 <!-- ─────────────────────────────── -->
 <!-- このツールでできること -->
 <!-- ─────────────────────────────── -->
+
 <div class="section">
   <div class="section-label">What's this?</div>
   <div class="section-title">このツールでできること</div>
@@ -405,6 +505,19 @@ footer {
 <!-- ─────────────────────────────── -->
 <!-- はじめてのセットアップ -->
 <!-- ─────────────────────────────── -->
+  <div class="page-nav">
+    <div class="page-nav-spacer"></div>
+    <button class="pnbtn next" onclick="showPage(1)">セットアップへ →</button>
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="page-1">
+  <div class="page-header">
+    <div class="page-header-num">Page 2 — Getting Started</div>
+    <h1>はじめてのセットアップ</h1>
+    <p>最初の1回だけ必要な準備です。慣れれば<strong>20〜30分</strong>で完了します。</p>
+  </div>
 <div class="section">
   <div class="section-label">Getting Started</div>
   <div class="section-title">はじめてのセットアップ</div>
@@ -483,155 +596,386 @@ footer {
 <!-- ─────────────────────────────── -->
 <!-- 毎回の使い方 -->
 <!-- ─────────────────────────────── -->
-<div class="section">
-  <div class="section-label">Daily Use</div>
-  <div class="section-title">画像を更新するときの手順</div>
-  <p class="section-body" style="margin-bottom: 24px;">
-    セットアップが終わった後は、毎回この3ステップだけです。
-  </p>
-
-  <div class="steps">
-
-    <div class="step">
-      <div class="step-num">1</div>
-      <div class="step-content">
-        <h3>画像を追加する</h3>
-        <p>
-          管理ツールを開き、表示したい画像を画面にドラッグ＆ドロップします。
-          JPG・PNG・WebPなどの画像ファイルに対応しています。
-          リサイズや圧縮は自動で行われます。
-        </p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">2</div>
-      <div class="step-content">
-        <h3>並び順を整える（任意）</h3>
-        <p>
-          追加した画像は自由に並び替えられます。
-          表示モード（スライドショー・グリッドなど）もここで選べます。
-        </p>
-      </div>
-    </div>
-
-    <div class="step">
-      <div class="step-num">3</div>
-      <div class="step-content">
-        <h3>「アップロード」ボタンを押す</h3>
-        <p>
-          アップロードが完了すると、VRChat内のギャラリーが自動的に更新されます。
-          ワールドのアップロードは不要です。
-        </p>
-      </div>
-    </div>
-
-  </div>
-
-  <div class="note ok" style="margin-top: 24px;">
-    <span class="note-icon">✅</span>
-    <div class="note-body">
-      <strong>ワールドに入り直すだけで最新の画像が表示されます。</strong>
-      VRChat内にいる最中でも、次回ワールドを起動したときに自動で反映されます。
-    </div>
+  <div class="page-nav">
+    <button class="pnbtn" onclick="showPage(0)">← 概要・プラン</button>
+    <button class="pnbtn next" onclick="showPage(2)">管理ツールの使い方 →</button>
   </div>
 </div>
 
+<!-- PAGE 3 -->
+<div class="page" id="page-2">
+  <div class="page-header">
+    <div class="page-header-num">Page 3 — How to Use</div>
+    <h1>管理ツールの使い方</h1>
+    <p>セットアップ完了後の日常操作をすべて説明します。</p>
+  </div>
 
-<!-- ─────────────────────────────── -->
-<!-- Google Driveから取り込む -->
-<!-- ─────────────────────────────── -->
+<!-- 画面の構成 -->
 <div class="section">
-  <div class="section-label">Google Drive Import</div>
-  <div class="section-title">Google Driveから直接取り込む</div>
-  <p class="section-body" style="margin-bottom: 16px;">
-    Google Driveに保存している画像を、URLを貼り付けるだけでそのまま取り込めます。
-    スマートフォンで撮影してDriveに保存→PCで開く、という使い方にも便利です。
-  </p>
+  <div class="section-label">Screen Layout</div>
+  <div class="section-title">画面の構成</div>
+  <p class="section-body" style="margin-bottom:16px;">アプリは大きく3つのエリアに分かれています。</p>
 
-  <div class="note warn">
-    <span class="note-icon">⚠️</span>
-    <div class="note-body">
-      取り込むファイルまたはフォルダは Google Drive の共有設定で
-      <strong>「リンクを知っている全員が閲覧可」</strong>に設定されている必要があります。
-      「自分のみ」の設定ではダウンロードできません。
+  <div class="screen-mock">
+    <div class="smock-bar">
+      <div class="smock-dot" style="background:#ff5f57"></div>
+      <div class="smock-dot" style="background:#febc2e"></div>
+      <div class="smock-dot" style="background:#28c840"></div>
+      <span class="smock-title">VRChat Gallery Manager</span>
+    </div>
+    <div style="background:#13151a;padding:8px 14px;border-bottom:1px solid #2a2a4a;display:flex;align-items:center;gap:16px;">
+      <span style="font-size:11px;color:#4a7ef5;font-family:monospace;font-weight:700;">VRC Gallery</span>
+      <span style="font-size:11px;color:rgba(255,255,255,.3);font-family:monospace;">project.json</span>
+      <span style="font-size:9px;color:#e8a44a;font-family:monospace;">● 未保存</span>
+      <span style="flex:1"></span>
+      <span style="font-size:10px;color:rgba(255,255,255,.3);font-family:monospace;">2 galleries / 12 images</span>
+      <span style="background:#4a7ef5;color:#fff;font-size:10px;padding:3px 10px;border-radius:3px;font-family:monospace;">保存</span>
+    </div>
+    <div class="smock-body">
+      <div class="smock-sidebar">
+        <div class="smock-sidebar-lbl">Galleries</div>
+        <div class="smock-sidebar-item active">wall_a &nbsp;<span style="font-size:9px;opacity:.5;">SlideShow</span></div>
+        <div class="smock-sidebar-item">wall_b &nbsp;<span style="font-size:9px;opacity:.5;">Grid8</span></div>
+        <div style="margin-top:8px;padding:7px 10px;border-radius:6px;font-size:11px;color:rgba(255,255,255,.2);border:1px dashed rgba(255,255,255,.1);text-align:center;">＋ 追加</div>
+      </div>
+      <div class="smock-main">
+        <div class="smock-heading">wall_a <span class="smock-badge">SlideShow</span><span style="font-size:10px;color:rgba(255,255,255,.3);font-family:monospace;margin-left:auto;">8 images</span></div>
+        <div class="smock-grid">
+          <div class="smock-thumb filled">🌅</div><div class="smock-thumb filled">🏔</div>
+          <div class="smock-thumb filled">🌊</div><div class="smock-thumb filled">🌸</div>
+          <div class="smock-thumb filled">🦋</div><div class="smock-thumb filled">🌃</div>
+          <div class="smock-thumb filled">🌿</div><div class="smock-thumb filled">🎨</div>
+        </div>
+        <div class="smock-drop">↓ ここに画像をドロップ、またはクリックして選択</div>
+      </div>
     </div>
   </div>
 
-  <div class="steps-numbered" style="margin-top: 20px;">
+  <div class="feat-cards">
+    <div class="feat-card"><div class="ico">📋</div><h4>① ヘッダー（上部）</h4><p>保存ボタン・未保存マーク・ギャラリー総数が表示されます。</p></div>
+    <div class="feat-card"><div class="ico">📂</div><h4>② サイドバー（左）</h4><p>ギャラリー一覧です。クリックで切り替え、＋ボタンで追加できます。</p></div>
+    <div class="feat-card"><div class="ico">🖼</div><h4>③ メインエリア（右）</h4><p>設定・画像グリッド・ドロップゾーンが表示されます。</p></div>
+  </div>
+</div>
+
+<!-- ギャラリーの作成 -->
+<div class="section">
+  <div class="section-label">Create Gallery</div>
+  <div class="section-title">ギャラリーを作る</div>
+  <p class="section-body" style="margin-bottom:16px;">VRChatのウォール1枚が、1つのギャラリーに対応します。</p>
+  <div class="steps-numbered">
     <div class="step-n">
       <div class="step-n-num">1</div>
       <div class="step-n-body">
-        <h4>Google DriveでファイルのURLをコピーする</h4>
-        <p>取り込みたい画像（またはフォルダ）を右クリック →「リンクをコピー」</p>
+        <h4>サイドバーの「＋ ギャラリーを追加」を押す</h4>
+        <p>名前入力ダイアログが開きます。</p>
       </div>
     </div>
     <div class="step-n">
       <div class="step-n-num">2</div>
       <div class="step-n-body">
-        <h4>管理ツールの「Google Drive取込」欄に貼り付ける</h4>
-        <p>URLを貼り付けると、ファイルかフォルダかが自動で判別されます。</p>
+        <h4>Gallery ID を入力する</h4>
+        <p>Unityで設定したパネルの名前と<strong>完全に同じ文字列</strong>を入力してください（例：<span class="inline-key">wall_a</span>）。英小文字・数字・アンダースコアのみ使用可。</p>
+        <div class="note warn" style="margin-top:10px;">
+          <span class="note-icon">⚠️</span>
+          <div class="note-body"><strong>UnityのInspectorの「Gallery Id」と完全一致</strong>させてください。違うと画像が表示されません。</div>
+        </div>
       </div>
     </div>
     <div class="step-n">
       <div class="step-n-num">3</div>
       <div class="step-n-body">
-        <h4>「インポート」ボタンを押す</h4>
-        <p>ダウンロードと画像処理が自動で行われます。フォルダ内の画像は一括取込できます。</p>
+        <h4>「作成」ボタンを押す</h4>
+        <p>サイドバーに新しいギャラリーが追加されます。</p>
       </div>
     </div>
   </div>
 </div>
 
-
-<!-- ─────────────────────────────── -->
-<!-- 表示モードについて -->
-<!-- ─────────────────────────────── -->
+<!-- 表示モードの設定 -->
 <div class="section">
-  <div class="section-label">Display Modes</div>
-  <div class="section-title">表示モードのちがい</div>
-
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px; margin-top: 16px;">
-
-    <div style="background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px;">
-      <div style="font-size: 22px; margin-bottom: 6px;">🖼</div>
-      <div style="font-weight: 700; margin-bottom: 4px;">シングル</div>
-      <div style="font-size: 12.5px; color: var(--mid);">1枚の画像を大きく表示。</div>
-    </div>
-
-    <div style="background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px;">
-      <div style="font-size: 22px; margin-bottom: 6px;">▶️</div>
-      <div style="font-weight: 700; margin-bottom: 4px;">スライドショー</div>
-      <div style="font-size: 12.5px; color: var(--mid);">一定時間ごとに画像が自動で切り替わります。</div>
-    </div>
-
-    <div style="background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px;">
-      <div style="font-size: 22px; margin-bottom: 6px;">⊞</div>
-      <div style="font-weight: 700; margin-bottom: 4px;">グリッド（2〜8枚）</div>
-      <div style="font-size: 12.5px; color: var(--mid);">複数枚を並べて表示。クリックで拡大できます。</div>
-    </div>
-
-    <div style="background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 16px;">
-      <div style="font-size: 22px; margin-bottom: 6px;">📖</div>
-      <div style="font-weight: 700; margin-bottom: 4px;">ページ送り</div>
-      <div style="font-size: 12.5px; color: var(--mid);">「次へ」ボタンでページをめくって見られます。</div>
-    </div>
-
+  <div class="section-label">Display Mode</div>
+  <div class="section-title">表示モードを設定する</div>
+  <p class="section-body" style="margin-bottom:16px;">ギャラリーを選択すると「表示設定」セクションが表示されます。ドロップダウンからモードを選んでください。</p>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:12px;margin-top:8px;">
+    <div class="feat-card"><div class="ico">🖼</div><h4>シングル</h4><p>1枚を大きく表示。クリックで拡大できます。</p></div>
+    <div class="feat-card"><div class="ico">▶️</div><h4>スライドショー</h4><p>自動で切り替わります。間隔を秒単位で設定可能。</p></div>
+    <div class="feat-card"><div class="ico">⊞</div><h4>グリッド 2/3/4/8</h4><p>複数枚を並べて表示。枚数で4種類から選べます。</p></div>
+    <div class="feat-card"><div class="ico">📖</div><h4>ページ送り</h4><p>「次へ」ボタンでページをめくる形式。大量の画像に最適。</p></div>
   </div>
-
-  <div class="note info" style="margin-top: 16px;">
+  <div class="note info" style="margin-top:16px;">
     <span class="note-icon">ℹ️</span>
-    <div class="note-body">
-      ウォールAはスライドショー、ウォールBはグリッド8枚、のように
-      <strong>パネルごとに別々のモードと画像を設定できます。</strong>
+    <div class="note-body">変更したら<strong>「設定を保存」ボタン</strong>を押してください。押さないと変更が反映されません。</div>
+  </div>
+</div>
+
+<!-- 画像を追加する -->
+<div class="section">
+  <div class="section-label">Add Images</div>
+  <div class="section-title">画像を追加する</div>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">A</div>
+      <div class="step-content">
+        <h3>ドラッグ＆ドロップで追加</h3>
+        <p>エクスプローラーから画像を「画像を追加」エリアへ直接ドロップします。複数ファイルも一度にドロップできます。JPG・PNG・WebP・BMPに対応しています。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">B</div>
+      <div class="step-content">
+        <h3>クリックしてダイアログから選ぶ</h3>
+        <p>「画像を追加」エリアをクリックするとファイル選択ダイアログが開きます。Ctrlキーで複数選択できます。</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">C</div>
+      <div class="step-content">
+        <h3>Google Driveから取り込む</h3>
+        <p>左メニューから「Google Drive取込」を選び、ファイルまたはフォルダのURLを貼り付けます。フォルダを指定すると中の画像をすべて一括取り込みできます。</p>
+      </div>
+    </div>
+  </div>
+  <div class="note ok" style="margin-top:16px;">
+    <span class="note-icon">✅</span>
+    <div class="note-body">追加した画像は自動的に<strong>リサイズ・圧縮・サムネイル生成</strong>が行われます。重い画像でもそのまま入れて大丈夫です。</div>
+  </div>
+</div>
+
+<!-- 画像の並び替えと管理 -->
+<div class="section">
+  <div class="section-label">Manage Images</div>
+  <div class="section-title">画像を並び替え・削除する</div>
+  <div class="steps-numbered">
+    <div class="step-n">
+      <div class="step-n-num" style="font-size:16px;">⠿</div>
+      <div class="step-n-body">
+        <h4>ドラッグで並び替える</h4>
+        <p>各画像カードの左端にある <span class="inline-key">⠿</span> マークをドラッグすると順番を変えられます。スライドショーはこの順番で再生されます。</p>
+      </div>
+    </div>
+    <div class="step-n">
+      <div class="step-n-num" style="font-size:16px;">✕</div>
+      <div class="step-n-body">
+        <h4>ホバーして削除ボタンを押す</h4>
+        <p>カードにマウスを乗せると右上に「✕」ボタンが現れます。確認ダイアログの後に削除されます。ローカルの元ファイルは消えません。</p>
+      </div>
+    </div>
+    <div class="step-n">
+      <div class="step-n-num" style="font-size:12px;">Aa</div>
+      <div class="step-n-body">
+        <h4>キャプションを付ける（任意）</h4>
+        <p>カード下部のテキスト部分をクリックすると説明文を入力できます。VRChatで画像を拡大したときに表示されます。</p>
+      </div>
     </div>
   </div>
 </div>
 
+  <div class="page-nav">
+    <button class="pnbtn" onclick="showPage(1)">← セットアップ</button>
+    <button class="pnbtn next" onclick="showPage(3)">アップロードへ →</button>
+  </div>
+</div>
 
-<!-- ─────────────────────────────── -->
-<!-- よくある質問 -->
-<!-- ─────────────────────────────── -->
+<!-- PAGE 4 -->
+<div class="page" id="page-3">
+  <div class="page-header">
+    <div class="page-header-num">Page 4 — Upload</div>
+    <h1>クラウドにアップロードする</h1>
+    <p>画像の準備ができたら、クラウドにアップロードしてVRChatに反映させます。</p>
+  </div>
+
+<!-- GitHubかR2か -->
+<div class="section">
+  <div class="section-label">Which to Use?</div>
+  <div class="section-title">GitHubとR2、どちらを使う？</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;">
+    <div style="background:var(--white);border:2px solid var(--lite);border-radius:14px;padding:20px;">
+      <div style="font-size:20px;margin-bottom:8px;">🐙</div>
+      <div style="font-weight:700;font-size:16px;color:var(--lite);margin-bottom:8px;">GitHub Pages</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.9;">
+        ✓ 完全無料<br>✓ 設定が簡単<br>✓ 少〜中量の画像に最適<br>△ アップロードはやや時間がかかる<br>
+        <br><strong style="color:var(--ink);">Liteプランはこちらのみ</strong>
+      </div>
+    </div>
+    <div style="background:var(--white);border:2px solid var(--std);border-radius:14px;padding:20px;">
+      <div style="font-size:20px;margin-bottom:8px;">☁️</div>
+      <div style="font-weight:700;font-size:16px;color:var(--std);margin-bottom:8px;">Cloudflare R2</div>
+      <div style="font-size:13px;color:var(--mid);line-height:1.9;">
+        ✓ 月10GBまで無料<br>✓ アップロードが速い<br>✓ 大量の画像に最適<br>△ 初回設定がやや多め<br>
+        <br><strong style="color:var(--ink);">Standard / Proで使用可能</strong>
+      </div>
+    </div>
+  </div>
+  <div class="note info" style="margin-top:16px;">
+    <span class="note-icon">ℹ️</span>
+    <div class="note-body">どちらも画像が完全非公開にはなりません。公開したくない写真のご利用はご注意ください。</div>
+  </div>
+</div>
+
+<!-- GitHubアップロード -->
+<div class="section">
+  <div class="section-label">GitHub Upload</div>
+  <div class="section-title">GitHubにアップロードする</div>
+  <div class="steps-numbered">
+    <div class="step-n">
+      <div class="step-n-num">1</div>
+      <div class="step-n-body">
+        <h4>上部の「アップロード」タブを開く</h4>
+        <p>「GitHub Pages Upload」パネルが表示されます。</p>
+      </div>
+    </div>
+    <div class="step-n">
+      <div class="step-n-num">2</div>
+      <div class="step-n-body">
+        <h4>「認証確認」ボタンを押す</h4>
+        <p>「認証成功: @あなたのID」と表示されれば準備OKです。</p>
+      </div>
+    </div>
+    <div class="step-n">
+      <div class="step-n-num">3</div>
+      <div class="step-n-body">
+        <h4>「アップロード開始」を押す</h4>
+        <p>画像ファイルとギャラリー設定ファイルが順番にアップロードされます。枚数によって数十秒〜数分かかります。</p>
+      </div>
+    </div>
+    <div class="step-n">
+      <div class="step-n-num">4</div>
+      <div class="step-n-body">
+        <h4>完了後、初回だけURLをUnityに設定する</h4>
+        <p>「GitHub Pages URL: https://○○.github.io/○○/」が表示されます。このURLをUnityのGalleryLoaderの「Manifest Url」に設定してワールドを再アップロードしてください。<strong>2回目以降は不要です。</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen-mock" style="margin-top:20px;">
+    <div class="smock-bar">
+      <div class="smock-dot" style="background:#ff5f57"></div>
+      <div class="smock-dot" style="background:#febc2e"></div>
+      <div class="smock-dot" style="background:#28c840"></div>
+      <span class="smock-title">アップロード中のイメージ</span>
+    </div>
+    <div style="background:#0e0f11;padding:20px;display:flex;flex-direction:column;gap:12px;">
+      <div style="font-size:11px;font-family:monospace;color:rgba(255,255,255,.5);display:flex;justify-content:space-between;">
+        <span>🐙 画像アップロード中: thumb/a82f91c3.jpg</span><span>42%</span>
+      </div>
+      <div class="smock-progress"><div class="smock-progress-bar" style="width:42%"></div></div>
+      <div style="font-size:10px;font-family:monospace;color:rgba(255,255,255,.3);">21 / 50 ファイル</div>
+      <div style="display:flex;gap:16px;font-family:monospace;font-size:11px;">
+        <span style="color:#22c55e;">✓ アップロード済み: 20</span>
+        <span style="color:rgba(255,255,255,.3);">待機中: 29</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- R2アップロード -->
+<div class="section">
+  <div class="section-label">R2 Upload — Standard / Pro</div>
+  <div class="section-title">Cloudflare R2にアップロードする</div>
+  <div class="note info">
+    <span class="note-icon">ℹ️</span>
+    <div class="note-body">R2を使うには事前に<a href="https://dash.cloudflare.com/sign-up" target="_blank" style="color:var(--accent);">Cloudflareアカウント</a>の作成が必要です。</div>
+  </div>
+  <div class="steps-numbered" style="margin-top:20px;">
+    <div class="step-n">
+      <div class="step-n-num">1</div>
+      <div class="step-n-body">
+        <h4>CloudflareでR2バケットを作る</h4>
+        <p>Cloudflareにログイン → 左メニューの「R2」→「バケットを作成」。好きな名前でOKです（例：<span class="inline-key">my-gallery</span>）。作成後「設定」タブでパブリックアクセスを有効にします。</p>
+      </div>
+    </div>
+    <div class="step-n">
+      <div class="step-n-num">2</div>
+      <div class="step-n-body">
+        <h4>APIトークンを発行する</h4>
+        <p>R2バケットの「APIトークンを管理」からトークンを作成します。権限は「オブジェクトの読み取りと書き込み」。表示される「アクセスキーID」と「シークレットアクセスキー」をコピーします。</p>
+        <div class="note warn" style="margin-top:10px;">
+          <span class="note-icon">⚠️</span>
+          <div class="note-body">シークレットアクセスキーはこの画面を閉じると再表示できません。必ずコピーしてください。</div>
+        </div>
+      </div>
+    </div>
+    <div class="step-n">
+      <div class="step-n-num">3</div>
+      <div class="step-n-body">
+        <h4>管理ツールの設定画面でR2情報を入力する</h4>
+        <p>「設定」→「Cloudflare R2」に Account ID・Bucket名・Access Key ID・Secretを入力します。「接続確認」ボタンで動作テストができます。</p>
+      </div>
+    </div>
+    <div class="step-n">
+      <div class="step-n-num">4</div>
+      <div class="step-n-body">
+        <h4>「アップロード開始」を押す</h4>
+        <p>R2はGitHubより大幅に速く、50枚程度なら数秒で完了します。完了後にbaseURLをUnityのManifest Urlにコピーしてワールドをアップロードしてください（初回のみ）。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 更新フロー -->
+<div class="section">
+  <div class="section-label">Update Flow</div>
+  <div class="section-title">2回目以降の更新手順</div>
+  <p class="section-body" style="margin-bottom:16px;">セットアップ完了後の毎回の手順はこれだけです。</p>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content"><h3>管理ツールで画像を追加・並び替えする</h3><p>ドラッグ＆ドロップで追加、⠿ハンドルで並び替え。</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content"><h3>「アップロード開始」を押す</h3><p>GitHub または R2 に変更分が反映されます。</p></div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content"><h3>VRChatでワールドに入り直す</h3><p>以上で完了です。ワールドの再アップロードは不要です。</p></div>
+    </div>
+  </div>
+</div>
+
+  <div class="page-nav">
+    <button class="pnbtn" onclick="showPage(2)">← 管理ツールの使い方</button>
+    <button class="pnbtn next" onclick="showPage(4)">FAQ・サポートへ →</button>
+  </div>
+</div>
+
+<!-- PAGE 5 -->
+<div class="page" id="page-4">
+  <div class="page-header">
+    <div class="page-header-num">Page 5 — FAQ &amp; Support</div>
+    <h1>よくある質問・サポート</h1>
+    <p>困ったときはまずここを確認してください。</p>
+  </div>
+
+  <div class="section">
+    <div class="section-label">Troubleshooting</div>
+    <div class="section-title">うまくいかないときのチェックリスト</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:16px;">
+      <div class="checklist-card"><h4>🥽 VRChatで画像が表示されない</h4><ul>
+        <li>管理ツールでアップロードが完了しているか確認する</li>
+        <li>GalleryLoader の Manifest Url が正しいURLになっているか確認する</li>
+        <li>管理ツールの Gallery Id と Unity の Inspector の Gallery Id が<strong>完全一致</strong>しているか確認する</li>
+        <li>ワールドに入り直す（キャッシュが残っている場合がある）</li>
+      </ul></div>
+      <div class="checklist-card"><h4>📤 アップロードがエラーになる</h4><ul>
+        <li>インターネットに接続しているか確認する</li>
+        <li>設定画面で「認証確認」を押して接続テストをする</li>
+        <li>GitHubトークンの有効期限が切れていないか確認する</li>
+        <li>リポジトリ名が <span class="inline-key">ID/リポジトリ名</span> の形式になっているか確認する</li>
+      </ul></div>
+      <div class="checklist-card"><h4>🔑 ライセンスキーが認証されない</h4><ul>
+        <li>キーをコピー＆ペーストして入力する（手入力はミスしやすい）</li>
+        <li><span class="inline-key">VGM-</span> から末尾まで全体がコピーされているか確認する</li>
+        <li>それでも通らない場合はBOOTHから販売者に連絡する</li>
+      </ul></div>
+      <div class="checklist-card"><h4>📁 Google Driveから取り込めない</h4><ul>
+        <li>共有設定が「リンクを知っている全員が閲覧可」になっているか確認する</li>
+        <li>URLが drive.google.com/file/d/ または /drive/folders/ の形式か確認する</li>
+      </ul></div>
+    </div>
+  </div>
+
 <div class="section">
   <div class="section-label">FAQ</div>
   <div class="section-title">よくある質問</div>
@@ -791,11 +1135,25 @@ footer {
   </div>
 </div>
 
-
+  <div class="page-nav">
+    <button class="pnbtn" onclick="showPage(3)">← アップロード</button>
+    <div class="page-nav-spacer"></div>
+  </div>
 <footer>
   VRChat Cloud Gallery Manager &nbsp;|&nbsp; このREADMEはオフラインで閲覧できます
 </footer>
 
-</div>
+</div><!-- page-4 -->
+</div><!-- pages -->
+
+<script>
+function showPage(i) {
+  document.querySelectorAll('.page').forEach(function(p){ p.classList.remove('active'); });
+  document.querySelectorAll('.nav-tab').forEach(function(t){ t.classList.remove('active'); });
+  document.getElementById('page-'+i).classList.add('active');
+  document.querySelectorAll('.nav-tab')[i].classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
 </body>
 </html>
